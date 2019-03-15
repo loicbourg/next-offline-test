@@ -1,5 +1,6 @@
 const express = require("express");
 const next = require("next");
+const { join } = require('path');
 
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
@@ -13,17 +14,18 @@ app
   .then(() => {
     const server = express();
 
-    server.get("/posts/:id", (req, res) => {
-      console.log('coucou1', req.url, req.params);
+    server.get('/favicon.ico', (req, res) => {
+      const filePath = join(__dirname, 'static', 'favicon.ico');
+      app.serveStatic(req, res, filePath);
+    });
 
+    server.get("/posts/:id", (req, res) => {
       const actualPage = "/post";
       const queryParams = { id: req.params.id };
       app.render(req, res, actualPage, queryParams);
     });
 
     server.get("*", (req, res) => {
-      console.log('coucou2', req.url);
-
       return handle(req, res);
     });
 
