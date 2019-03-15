@@ -1,0 +1,26 @@
+{
+  "name": "nextjs-workbox",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "next": "^8.0.3",
+    "nodemon": "^1.18.10",
+    "prettier": "^1.16.4",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
+  },
+  "scripts": {
+    "dev": "nodemon server.js  -w server.js ",
+    "json": "json-server --watch db.json",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "express": "^4.16.4"
+  },
+  "nodemonConfig": {
+    "ignore": ["pages/*", ".next/*"]
+  }
+}
