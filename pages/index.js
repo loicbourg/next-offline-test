@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 class HelloUA extends React.Component {
   static async getInitialProps({ req }) {
-    const response = await axios.get('https://localhost:8080/api/posts/', {responseType: 'json'});
+    const response = await axios.get('http://localhost:8080/api/posts/', {responseType: 'json'});
 
     return { posts: response.data }
   }

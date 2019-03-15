@@ -4,7 +4,7 @@ import Link from 'next/link'
 
 class post extends Component {
   static async getInitialProps(context) {
-    const response = await axios.get(`https://localhost:8080/api/posts/${context.query.id}`, {responseType: 'json'});
+    const response = await axios.get(`http://localhost:8080/api/posts/${context.query.id}`, {responseType: 'json'});
 
     return { post: response.data }
   }
