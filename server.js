@@ -6,9 +6,6 @@ const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
-// TODO: delete in production
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-
 app
   .prepare()
   .then(() => {
@@ -18,6 +15,13 @@ app
       const filePath = join(__dirname, 'static', 'favicon.ico');
       app.serveStatic(req, res, filePath);
     });
+
+      server.get('/service-worker.js', (req, res) => {
+          console.log('ok');
+
+          const filePath = join(__dirname, '.next', 'service-worker.js');
+          app.serveStatic(req, res, filePath);
+      });
 
     server.get("/posts/:id", (req, res) => {
       const actualPage = "/post";
